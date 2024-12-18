@@ -1,8 +1,8 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-
-
+import { middleware } from "./middleware/middleware.js"
+import { connectDB } from "./db.js"
 
 if (process.env.NODE_ENV === 'production') {
     dotenv.config({path: "./.env.production"});

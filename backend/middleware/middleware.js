@@ -5,10 +5,8 @@ import dotenv from "dotenv";
 
 if (process.env.NODE_ENV === 'production') {
     dotenv.config({path: "./.env.production"});
-    console.log('Cargando variables de producción');
 } else {
     dotenv.config({path: "./.env.development"});
-    console.log('Cargando variables de desarrollo');
 }
 
 export const middleware = express.Router();
