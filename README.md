@@ -1,13 +1,13 @@
 ### 1. **Gestión de Usuarios**
 
-- **Registro de usuarios**: El sistema debe permitir a los usuarios registrarse proporcionando información básica como nombre, correo electrónico, contraseña, edad, peso, altura, actividad física, entre otros datos relevantes.
+- **Registro de usuarios**: El sistema debe permitir a los usuarios registrarse proporcionando información básica como nombre, correo electrónico, contraseña, edad, peso, altura, actividad física (sedentarismo, moderadamente activo, muy activo), objetivo de salud (Perder peso, ganar musculo, mantener peso, mejorar salud en general.)
 - **Inicio de sesión**: Los usuarios deben poder acceder a su cuenta con un correo electrónico y contraseña.
 - **Recuperación de contraseña**: Funcionalidad para que los usuarios puedan recuperar o restablecer su contraseña en caso de olvidarla.
 - **Edición del perfil**: Los usuarios pueden actualizar su información personal (peso, altura, objetivos de salud, alergias, preferencias alimenticias, etc.).
 
 ### 2. **Configuración del Perfil del Usuario**
 
-- **Introducción de datos personales**: Al completar su perfil, los usuarios ingresan datos como edad, peso, altura, nivel de actividad física, objetivos (perder peso, aumentar masa muscular, mantenimiento, etc.), alergias, intolerancias, preferencias alimenticias (vegetariano, vegano, etc.).
+- **Introducción de datos personales**: Al completar su perfil, los usuarios ingresan datos como edad, peso, altura,actividad física (sedentarismo, moderadamente activo, muy activo),objetivo de salud (Perder peso, ganar musculo, mantener peso, mejorar salud en general.), alergias, intolerancias, preferencias alimenticias (vegetariano, vegano, etc.).
 - **Establecimiento de metas**: El usuario puede establecer objetivos específicos como perder X kilos, ganar músculo, o mejorar el bienestar general, lo que ayudará a generar recomendaciones personalizadas.
 - **Actualización de información**: Los usuarios pueden modificar estos datos a medida que cambian, por ejemplo, en el caso de la pérdida de peso o cambio en los hábitos alimenticios.
 
