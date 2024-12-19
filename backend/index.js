@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { middleware } from "./middleware/middleware.js"
 import { connectDB } from "./db.js"
 import { routerApiAuthLogin } from "./routers/login.js";
+import { routerApiAuthRegister } from "./routers/register.js";
 
 if (process.env.NODE_ENV === 'production') {
     dotenv.config({path: "./.env.production"});
@@ -20,6 +21,7 @@ app.use(middleware); //CONFIGURACION DEL MIDDLEWARE
 connectDB(); //CONEXION A LA BASE DE DATOS
 
 app.use("/api/auth/", routerApiAuthLogin);
+app.use("/api/auth/", routerApiAuthRegister);
 
 app.listen(process.env.PUERTO, () => {
     console.log("Conectado backend");
