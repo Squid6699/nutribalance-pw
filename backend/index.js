@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { middleware } from "./middleware/middleware.js"
 import { connectDB } from "./db.js"
+import { routerApiAuthLogin } from "./routers/login.js";
 
 if (process.env.NODE_ENV === 'production') {
     dotenv.config({path: "./.env.production"});
@@ -17,3 +18,9 @@ const app = express();
 app.use(middleware); //CONFIGURACION DEL MIDDLEWARE
 
 connectDB(); //CONEXION A LA BASE DE DATOS
+
+app.use("/api/auth/", routerApiAuthLogin);
+
+app.listen(process.env.PUERTO, () => {
+    console.log("Conectado backend");
+});
