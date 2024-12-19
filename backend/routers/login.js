@@ -41,7 +41,6 @@ routerApiAuthLogin.get("/login", async (req, res) => {
 
         res.json({success: true, name: user.name, email: user.email, autorization: user.autorization});
 
-
     } catch (error) {
         return res.json({msg: "CORREO Y/O CONTRASENA INCORRECTOS"})
     }
