@@ -3,7 +3,13 @@ import bcrypt from "bcrypt";
 import { Users } from "../schemas/users.js"
 export const routerApiAuthLogin = express.Router();
 
-routerApiAuthLogin.post("/login", async (req, res) => {
+routerApiAuthLogin.get("/login", async (req, res) => {
+    const customHeader = req.headers['x-frontend-header'];
+
+    if (customHeader !== 'frontend') {
+        return res.status(401).send('Unauthorized');
+    }
+    
     const {email, password} = req.body;
 
     if (!email || !password){
