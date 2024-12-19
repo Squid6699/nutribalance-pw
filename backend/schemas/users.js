@@ -12,6 +12,9 @@ const UsersSchema = new mongoose.Schema({
     height: String,
     activity: String,
     objective: String,
+    allergies: String,
+    intolerances: String,
+    food_preferences: String,
     autorization: {
         type: Boolean,
         default: false
