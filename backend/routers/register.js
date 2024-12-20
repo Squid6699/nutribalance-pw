@@ -5,10 +5,17 @@ import { Users } from "../schemas/users.js";
 export const routerApiAuthRegister = express.Router();
 
 routerApiAuthRegister.post("/register", async (req, res) => {
+
+    const customHeader = req.headers['x-frontend-header'];
+
+    if (customHeader !== 'frontend') {
+        return res.status(401).send('Unauthorized');
+    }
+    
     const {
         name, 
         email, 
-        password, 
+        password,
         age, 
         size, 
         height, 
@@ -16,11 +23,16 @@ routerApiAuthRegister.post("/register", async (req, res) => {
         objective,
         allergies,
         intolerances,
-        food_preferences
+        food_preferences,
     } = req.body;
 
     if (!name || !email || !password){
         return res.status(400).json({ msg: 'MISSING DATA' });
+    }
+
+    var profileCompleted = false;
+    if (age && size && height && activity && objective && allergies && intolerances && food_preferences){
+        profileCompleted = true;
     }
 
     try {
@@ -46,7 +58,8 @@ routerApiAuthRegister.post("/register", async (req, res) => {
             objective: objective,
             allergies: allergies,
             intolerances: intolerances,
-            food_preferences: food_preferences
+            food_preferences: food_preferences,
+            profileCompleted: profileCompleted,
         })
 
         const userAdd = await newUser.save();
