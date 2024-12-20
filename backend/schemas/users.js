@@ -18,6 +18,10 @@ const UsersSchema = new mongoose.Schema({
     autorization: {
         type: Boolean,
         default: false
+    },
+    profileCompleted: {
+        type: Boolean,
+        default: false
     }
 }, { versionKey: false });
 
