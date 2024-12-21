@@ -6,10 +6,16 @@ export interface ButtonProps {
 
 export interface InputProps {
     type: "password" | "email" | "text" | "number";
-    placeholder: string;
+    label: string;
     icon?: any;
     width?: string;
     height?: string;
     defaultValue?: string;
     value?: string;
+}
+
+export interface SelectProps {
+    text: string | null;
+    icon?: any;
+    style: "accept" | "normal";
 }
