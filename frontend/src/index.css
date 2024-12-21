@@ -1,7 +1,8 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-  --bg-color: #f9fcf8;
+  /* --bg-color: #f9fcf8; */
+  --bg-color: #222327;
   --accept-color: #1fdf25;
   --normal-color: #e8f3e9;
   --text-color: #0e1b10;
@@ -17,4 +18,13 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: var(--bg-color);
+}
+
+.icon{
+  color: var(--text-color);
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
