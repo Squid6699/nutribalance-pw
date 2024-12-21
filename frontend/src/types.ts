@@ -2,6 +2,7 @@ export interface ButtonProps {
     text: string | null;
     icon?: any;
     style: "accept" | "normal";
+    loading?: boolean;
 }
 
 export interface InputProps {
@@ -12,6 +13,8 @@ export interface InputProps {
     height?: string;
     value?: string;
     readOnly?: boolean;
+    error?: string;
+    onChange?: (value: string) => void
 }
 
 export interface SelectProps {
