@@ -4,7 +4,7 @@
 
 .input-field input{
   border-radius: 8px;
-  border: 1px solid;
+  border: 1px solid #ccc;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -17,7 +17,7 @@
 .input-field label{
   position: absolute;
   top: 50%;
-  left: 35px;
+  left: 10px;
   transform: translateY(-50%);
   color: rgba(0, 0, 0, 0.394);
   font-size: 19px;
@@ -28,7 +28,7 @@
 /* Cuando el campo tiene texto o placeholder no visible */
 input:focus,
 input:not(:placeholder-shown) {
-  border: 2px solid;
+  border: 2px solid #ccc;
 }
 
 input:focus ~ label,
@@ -37,5 +37,5 @@ input:not(:placeholder-shown) ~ label {
   font-size: 16px;
   padding: 0 5px;
   background: var(--bg-color);
-  color: rgb(0, 0, 0);
+  color: rgba(0, 0, 0, 0.394);
 }
