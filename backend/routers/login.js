@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import { Users } from "../schemas/users.js"
 export const routerApiAuthLogin = express.Router();
 
-routerApiAuthLogin.get("/login", async (req, res) => {
+routerApiAuthLogin.post("/login", async (req, res) => {
     const customHeader = req.headers['x-frontend-header'];
 
     if (customHeader !== 'frontend') {
@@ -16,17 +16,18 @@ routerApiAuthLogin.get("/login", async (req, res) => {
         return res.json({ msg: 'FALTAN DATOS' });
     }
 
+
     try {
         const user = await Users.findOne({email: email.toLowerCase()});
 
         if (!user){
-            return res.json({ msg: "CORREO Y/O CONTRASENA INCORRECTOS" });
+            return res.json({success: false, msg: "CORREO Y/O CONTRASENA INCORRECTOS" });
         }
 
         const passwordMatch = await bcrypt.compare(password, user.password);
 
         if (!passwordMatch){
-            return res.json({ msg: "CORREO Y/O CONTRASENA INCORRECTOS" });
+            return res.json({success: false, msg: "CORREO Y/O CONTRASENA INCORRECTOS" });
         }
 
         const token = jwt.sign({ name: user.name, email: user.email, autorization: user.autorization }, process.env.SECRET_KEY, {
@@ -42,6 +43,6 @@ routerApiAuthLogin.get("/login", async (req, res) => {
         res.json({success: true, name: user.name, email: user.email, autorization: user.autorization});
 
     } catch (error) {
-        return res.json({msg: "CORREO Y/O CONTRASENA INCORRECTOS"})
+        return res.json({success: false, msg: "CORREO Y/O CONTRASENA INCORRECTOS"})
     }
 })
