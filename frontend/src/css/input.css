@@ -25,6 +25,13 @@
   transition: .3s;
 }
 
+.msgError{
+  color: red;
+  font-size: 0.8em;
+  margin-top: 0.2em;
+  margin-left: 10px;
+}
+
 /* Cuando el campo tiene texto o placeholder no visible */
 input:focus,
 input:not(:placeholder-shown) {
