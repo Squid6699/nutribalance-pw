@@ -1,9 +1,9 @@
 import "../css/input.css";
 import { InputProps } from "../types";
 
-function Input({type, placeholder, icon, height, width, defaultValue, value }: InputProps) {
+function Input({type, label, icon, height, width, defaultValue, value }: InputProps) {
   return (
-    <div>
+    <div className="input-field">
       {icon && (
         <span
           style={{
@@ -18,12 +18,14 @@ function Input({type, placeholder, icon, height, width, defaultValue, value }: I
         </span>
       )}
       <input
+        spellCheck="false"
+        placeholder=""
         type={type}
-        placeholder={placeholder}
         defaultValue={defaultValue}
         value={value}
         style={{height: height, width: width, paddingLeft: icon && "30px"}}
       />
+      <label>{label}</label>
     </div>
   );
 }
