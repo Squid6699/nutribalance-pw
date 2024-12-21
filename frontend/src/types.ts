@@ -5,17 +5,17 @@ export interface ButtonProps {
 }
 
 export interface InputProps {
-    type: "password" | "email" | "text" | "number";
+    type?: "password" | "email" | "text" | "number";
     label: string;
     icon?: any;
     width?: string;
     height?: string;
-    defaultValue?: string;
     value?: string;
+    readOnly?: boolean;
 }
 
 export interface SelectProps {
-    text: string | null;
+    options: string[];
+    label: string;
     icon?: any;
-    style: "accept" | "normal";
 }
