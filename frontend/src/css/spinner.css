@@ -1,0 +1,22 @@
+.spinner-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  width: 100%; /* Asegúrate de que ocupe todo el ancho */
+  height: 100%; /* Asegúrate de que ocupe todo el alto del área disponible */
+}
+
+.spinner {
+  border: 2px solid rgba(0, 0, 0, 0.1); /* Color del fondo */
+  border-left-color: #ffffff; /* Color de la animación */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite; /* Animación de giro */
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
