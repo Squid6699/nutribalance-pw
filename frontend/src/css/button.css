@@ -9,6 +9,7 @@
   transition: border-color 0.25s;
   color: var(--text-color);
   background-color: var(--accept-color);
+  width: 100%;
 }
 
 .normal {
@@ -22,6 +23,7 @@
   transition: border-color 0.25s;
   color: var(--text-color);
   background-color: var(--normal-color);
+  width: 100%;
 }
 
 button:hover {
