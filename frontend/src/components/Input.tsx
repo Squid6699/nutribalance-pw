@@ -1,31 +1,36 @@
+import { useState } from "react";
 import "../css/input.css";
 import { InputProps } from "../types";
 
-function Input({type, label, icon, height, width, defaultValue, value }: InputProps) {
+function Input({type= "text", label, icon, height, width, value, readOnly = false }: InputProps) {
+  const [inputValue, setInputValue] = useState(value);
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setInputValue(value);
+  }
+
   return (
     <div className="input-field">
       {icon && (
-        <span
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "10px",
-            transform: "translateY(-50%)",
-            pointerEvents: "none",
-          }}
-        >
-          {icon}
-        </span>
+        <span className="icon">{icon}</span>
       )}
       <input
         spellCheck="false"
         placeholder=""
         type={type}
-        defaultValue={defaultValue}
-        value={value}
-        style={{height: height, width: width, paddingLeft: icon && "30px"}}
+        value={inputValue}
+        onChange={handleInputChange}
+        readOnly={readOnly}
+        style={
+          {
+            height: height,
+            width: width, 
+            paddingLeft: icon ? "30px" : "10px",
+          }
+        }
       />
-      <label>{label}</label>
+      <label style={{left: icon && "30px"}}>{label}</label>
     </div>
   );
 }
