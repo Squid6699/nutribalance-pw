@@ -4,10 +4,15 @@ import "../css/login.css"
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons"
 import { faLock } from "@fortawesome/free-solid-svg-icons"
 import Button from "../components/Button"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 function Login(){
+
+    useEffect(() => {
+        document.title = "Nutribalance - Login";
+    }, []);
+    
     const HOST = import.meta.env.VITE_HOST;
     const [loading, setLoading] = useState(false);
     const [errorLogin, setErrorLogin] = useState("");
@@ -56,6 +61,7 @@ function Login(){
                     "x-frontend-header": "frontend",
                     "Content-Type": "application/json",
                 },
+                credentials: "include",
                 body: JSON.stringify({email: formValues.email, password: formValues.password}),
             });
 
