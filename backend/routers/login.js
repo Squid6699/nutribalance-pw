@@ -1,4 +1,5 @@
 import express from "express";
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { Users } from "../schemas/users.js"
 export const routerApiAuthLogin = express.Router();
@@ -37,9 +38,7 @@ routerApiAuthLogin.post("/login", async (req, res) => {
         res.cookie("session", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            sameSite: "strict",
         });
-
         res.json({success: true, name: user.name, email: user.email, autorization: user.autorization});
 
     } catch (error) {
