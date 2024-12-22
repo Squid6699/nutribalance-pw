@@ -20,6 +20,30 @@ app.use(middleware); //CONFIGURACION DEL MIDDLEWARE
 
 connectDB(); //CONEXION A LA BASE DE DATOS
 
+app.post("/api/", (req, res) => {
+    const customHeader = req.headers['x-frontend-header'];
+
+    if (customHeader !== 'frontend') {
+        return res.status(401).send('Unauthorized');
+    }
+
+    const token = req.cookies.session;
+
+    if (!token) {
+        return res.json({success: false, msg: "TOKEN INVALIDO."})
+    }
+    
+    try {
+        const verified = jwt.verify(token, process.env.SECRET_KEY);
+
+        return res.json({success: true, name: verified.name, email: verified.email, autorization: verified.autorization});
+    } catch (error) {
+        return res.json({success: false, msg: "TOKEN EXPIRADO."})
+    }
+})
+
+
+
 app.use("/api/auth/", routerApiAuthLogin);
 app.use("/api/auth/", routerApiAuthRegister);
 
