@@ -1,5 +1,5 @@
 export interface ButtonProps {
-    text: string | null;
+    text?: string | null;
     icon?: any;
     style: "accept" | "normal";
     loading?: boolean;
