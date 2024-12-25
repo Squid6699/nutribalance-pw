@@ -6,10 +6,10 @@
     align-items: center;
     border-bottom: 1px solid #e9ecef;
     height: 60px;
-    width: 97%;
-    min-width: 700px;
+    width: 100%;
+    min-width: 300px;
     gap: 30px;
-    padding: 0px 20px 0px 20px;
+    /* padding: 0px 20px 0px 20px; */
     z-index: 1000;
 }
 
@@ -21,6 +21,11 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    padding-left: 20px;
+}
+
+.header-buttons{
+    padding-right: 20px;
 }
 
 .logo-container img{
@@ -44,4 +49,86 @@
 .header-container nav ul span{
     font-size: 15px;
     font-weight: 500;
+}
+
+.menu-icon{
+    display: none;
+    cursor: pointer;
+    padding-right: 20px;
+}
+
+.menu-icon .bar1, .menu-icon .bar2, .menu-icon .bar3 {
+    width: 25px;
+    height: 3px;
+    background-color: #000000;
+    margin: 6px 0;
+    transition: 0.4s;
+    border-radius: 5px;
+}
+
+.change .bar1 {
+    transform: translate(0, 9px) rotate(-45deg);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    transform: translate(0, -9px) rotate(45deg);
+}
+
+/* ESTILO DE OFFCANVAS */
+.offcanvas {
+    position: fixed;
+    top: 0;
+    right: -332px;
+    width: 300px;
+    height: 100%;
+    background-color: var(--bg-color);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease-in-out;
+    z-index: 20;
+    padding: 1rem;
+    top: 3rem;
+}
+
+.offcanvas-visible {
+    right: 0;
+}
+
+.offcanvas ul {
+    list-style: none;
+    padding: 0;
+}
+
+.offcanvas ul li {
+    margin: 1rem 0;
+}
+
+.offcanvas ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+}
+/* FIN ESTILO OFFCANVAS */
+
+@media (width < 715px){
+    .header-container nav{
+        display: none;
+    }
+
+    .header-buttons{
+        display: none;
+    }
+
+    .menu-icon{
+        display: block;
+    }
+}
+
+@media (width > 715px){
+    .offcanvas {
+        display: none;
+    }
 }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "../css/header.css";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
@@ -8,10 +9,12 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 
 function Header() {
     const { email } = useSesion();
+    const [offCanvas, setOffCanvas] = useState(false);
+
     return(
         <>
             <header className="header-container">
-                <Link to={"/"}>
+                <Link to={"/"} onClick={() => setOffCanvas(false)}>
                     <div className="logo-container">
                         <img src={logo} alt="Nutribalance" />
                         <span>Nutribalance</span>
@@ -41,9 +44,26 @@ function Header() {
                             <Button style="normal" icon={<FontAwesomeIcon icon={faUser} />} />
                         </Link>
                     }
-                    
+                </div>
+                <div className={`menu-icon ${offCanvas ? "change" : ""}`} onClick={() => setOffCanvas(!offCanvas)}>
+                    <div className="bar1"></div>
+                    <div className="bar2"></div>
+                    <div className="bar3"></div>
                 </div>
             </header>
+
+            {/* OFFCANVAS */}
+            <div className={`offcanvas ${offCanvas ? "offcanvas-visible" : ""}`}>
+                <ul>
+                    <li><Link to={"/auth/login"} onClick={() => setOffCanvas(false)}>Iniciar Sesion</Link></li>
+                    <li><Link to={"/auth/register"} onClick={() => setOffCanvas(false)}>Registrarse</Link></li>
+                    <hr />
+                    <li><Link to={"/"} onClick={() => setOffCanvas(false)}>Recetas</Link></li>
+                    <li><Link to={"/about"} onClick={() => setOffCanvas(false)}>Plan de dieta</Link></li>
+                    <li><Link to={"/contact"} onClick={() => setOffCanvas(false)}>Creador de recetas</Link></li>
+                </ul>
+            </div>
+
             <div className="spacer"></div>
         </>
     );
