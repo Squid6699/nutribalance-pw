@@ -11,7 +11,7 @@ export interface InputProps {
     icon?: any;
     width?: string;
     height?: string;
-    value?: string;
+    value?: string | number | boolean;
     readOnly?: boolean;
     error?: string;
     onChange?: (value: string) => void
@@ -21,4 +21,5 @@ export interface SelectProps {
     options: string[];
     label: string;
     icon?: any;
+    onChange?: (value: string) => void;
 }
