@@ -27,7 +27,7 @@ function Input({
           spellCheck="false"
           placeholder=""
           type={type}
-          value={value}
+          value={typeof value === "boolean" ? value.toString() : value}
           onChange={handleInputChange}
           readOnly={readOnly}
           style={{
