@@ -16,6 +16,8 @@
   transition: border-color 0.25s;
   background-color: var(--bg-color);
   outline: none;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .autocomplete-container label {
