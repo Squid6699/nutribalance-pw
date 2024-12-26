@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../css/Select.css";
 import { SelectProps } from "../types";
 
-function Select({ options, label, icon }: SelectProps) {
+function Select({ options, label, icon, onChange }: SelectProps) {
   const [inputValue, setInputValue] = useState("");
   const [filteredOptions, setFilteredOptions] = useState(options);
   const [isListVisible, setIsListVisible] = useState(false);
@@ -21,6 +21,9 @@ function Select({ options, label, icon }: SelectProps) {
   // Seleccionar una opción
   const handleOptionClick = (option: string) => {
     setInputValue(option);
+    if (onChange) {
+      onChange(option);
+    }
     setIsListVisible(false);
   };
 
