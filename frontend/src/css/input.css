@@ -1,5 +1,7 @@
 .input-field {
   position: relative;
+  width: 100%;
+
 }
 
 .input-field input{
@@ -12,6 +14,7 @@
   transition: border-color 0.25s;
   background-color: var(--bg-color);
   outline: none;
+  width: 100%;
 }
 
 .input-field label{
