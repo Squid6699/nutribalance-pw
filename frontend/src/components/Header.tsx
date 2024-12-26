@@ -55,8 +55,28 @@ function Header() {
             {/* OFFCANVAS */}
             <div className={`offcanvas ${offCanvas ? "offcanvas-visible" : ""}`}>
                 <ul>
-                    <li><Link to={"/auth/login"} onClick={() => setOffCanvas(false)}>Iniciar Sesion</Link></li>
-                    <li><Link to={"/auth/register"} onClick={() => setOffCanvas(false)}>Registrarse</Link></li>
+                    {
+                        !email ?
+                        <>
+                            <div style={{marginBottom: "1rem"}}>
+                                <Link to={"/auth/login"} onClick={() => setOffCanvas(false)}>
+                                    <Button text="Iniciar sesión" style="normal" />
+                                </Link>
+                            </div>
+
+                            <div>
+                                <Link to={"/auth/register"} onClick={() => setOffCanvas(false)}>
+                                    <Button text="Registrarse" style="normal" />
+                                </Link>
+                            </div>    
+                            
+                        </>
+                        
+                        :
+                        <Link to={"/profile"} onClick={() => setOffCanvas(false)}>
+                            <Button style="normal" icon={<FontAwesomeIcon icon={faUser} />} />
+                        </Link>
+                    }
                     <hr />
                     <li><Link to={"/"} onClick={() => setOffCanvas(false)}>Recetas</Link></li>
                     <li><Link to={"/about"} onClick={() => setOffCanvas(false)}>Plan de dieta</Link></li>
