@@ -26,8 +26,29 @@
     gap: 1rem;
 }
 
+.wizard-buttons, .wizard-button {
+    display: flex;
+    gap: 1rem;
+}
+
+.wizard-buttons {
+    padding-left: 50%;
+}
+
+.wizard-button {
+    padding-left: 75%;
+}
+
 @media (width < 544px){
     .register-container {
         width: 250px;
+    }
+
+    .wizard-buttons{
+        padding-left: 0%;
+    }
+
+    .wizard-button{
+        padding-left: 50%;
     }
 }

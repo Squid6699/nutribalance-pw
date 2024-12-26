@@ -7,12 +7,19 @@ import { faLock } from "@fortawesome/free-solid-svg-icons/faLock";
 import { useEffect, useState } from "react";
 import { faBowlFood, faBrain, faChartLine, faHashtag, faScaleBalanced, faShrimp, faTextHeight } from "@fortawesome/free-solid-svg-icons";
 import Select from "../components/Select";
+import { AnimatePresence, motion } from "framer-motion";
 
 function Register(){
 
     useEffect(() => {
         document.title = "Nutribalance - Register";
     }, []);
+
+    const stepVariants = {
+        initial: { opacity: 0, x: 100 },
+        animate: { opacity: 1, x: 0 },
+        exit: { opacity: 0, x: -100 },
+    };
 
     const [formValues, setFormValues] = useState({
         name: "",
@@ -57,85 +64,127 @@ function Register(){
                 <div className="register-container">
                     <h1>Registarse</h1>
                     <form className="register-content" onSubmit={handleSubmitRegister}>
+                        <AnimatePresence mode="wait">
+                            {
+                                step === 1 && (
+                                    <>
+                                        <motion.div
+                                            className="register-content"
+                                            key="step1"
+                                            initial="initial"
+                                            animate="animate"
+                                            exit="exit"
+                                            variants={stepVariants}
+                                            transition={{ duration: 0.3 }}
+                                        >
+                                            <div className="form-group">
+                                                <Input type="text" label="Nombre" icon={<FontAwesomeIcon icon={faUser}  />} value={formValues.name} onChange={(value) => handleInputChange("name", value)} />
+                                            </div>
+                                            <div className="form-group">
+                                                <Input type="text" label="Correo" icon={<FontAwesomeIcon icon={faEnvelope} />} value={formValues.email} onChange={(value) => handleInputChange("email", value)} />
+                                            </div>
+                                            <div className="form-group">
+                                                <Input type="password" label="Contraseña" icon={<FontAwesomeIcon icon={faLock} />} value={formValues.password} onChange={(value) => handleInputChange("password", value)} />
+                                            </div>
 
-                        {
-                            step === 1 && (
-                                <>
-                                    <div className="form-group">
-                                        <Input type="text" label="Nombre" icon={<FontAwesomeIcon icon={faUser}  />} value={formValues.name} onChange={(value) => handleInputChange("name", value)} />
-                                    </div>
-                                    <div className="form-group">
-                                        <Input type="text" label="Correo" icon={<FontAwesomeIcon icon={faEnvelope} />} value={formValues.email} onChange={(value) => handleInputChange("email", value)} />
-                                    </div>
-                                    <div className="form-group">
-                                        <Input type="password" label="Contraseña" icon={<FontAwesomeIcon icon={faLock} />} value={formValues.password} onChange={(value) => handleInputChange("password", value)} />
-                                    </div>
-                                </>
-                            )
-                        }
+                                            <div className="wizard-button">
+                                                <Button style="normal" text="Siguiente" onClick={handleNextStep} />
+                                            </div>
+                                        </motion.div>
+                                    </>
+                                )
+                            }
 
-                        {
-                            step === 2 && (
-                                <>
-                                    <div className="form-group">
-                                        <Input type="number" label="Edad" icon={<FontAwesomeIcon icon={faHashtag} />} value={formValues.age} onChange={(value) => handleInputChange("age", value)} />
-                                    </div>
-                                    <div className="form-group">
-                                        <Input type="number" label="Peso" icon={<FontAwesomeIcon icon={faScaleBalanced} />} value={formValues.weight} onChange={(value) => handleInputChange("weight", value)} />
-                                    </div>
-                                    <div className="form-group">
-                                        <Input type="number" label="Altura" icon={<FontAwesomeIcon icon={faTextHeight} />} value={formValues.height} onChange={(value) => handleInputChange("height", value)} />
-                                    </div>
-                                    <div className="form-group">
-                                        <Select label="Actividad" options={[
-                                            "Sedentarismo",
-                                            "Moderado",
-                                            "Activo",
-                                            "Muy activo"
-                                        ]} icon={<FontAwesomeIcon icon={faChartLine} />} onChange={(value) => handleInputChange("activity", value)} />
-                                    </div>
-                                </>
-                            )
-                        }
+                            {
+                                step === 2 && (
+                                    <>
+                                        <motion.div
+                                            className="register-content"
+                                            key="step2"
+                                            initial="initial"
+                                            animate="animate"
+                                            exit="exit"
+                                            variants={stepVariants}
+                                            transition={{ duration: 0.3 }}
+                                        >
+                                            <div className="form-group">
+                                                <Input type="number" label="Edad" icon={<FontAwesomeIcon icon={faHashtag} />} value={formValues.age} onChange={(value) => handleInputChange("age", value)} />
+                                            </div>
+                                            <div className="form-group">
+                                                <Input type="number" label="Peso" icon={<FontAwesomeIcon icon={faScaleBalanced} />} value={formValues.weight} onChange={(value) => handleInputChange("weight", value)} />
+                                            </div>
+                                            <div className="form-group">
+                                                <Input type="number" label="Altura" icon={<FontAwesomeIcon icon={faTextHeight} />} value={formValues.height} onChange={(value) => handleInputChange("height", value)} />
+                                            </div>
+                                            <div className="form-group">
+                                                <Select label="Actividad" options={[
+                                                    "Sedentarismo",
+                                                    "Moderado",
+                                                    "Activo",
+                                                    "Muy activo"
+                                                ]} icon={<FontAwesomeIcon icon={faChartLine} />} onChange={(value) => handleInputChange("activity", value)} />
+                                            </div>
 
-                        {
-                            step === 3 && (
-                                <>
-                                    <div className="form-group">
-                                        <Select label="Objetivo" options={[
-                                            "Perder peso",
-                                            "Mantener peso",
-                                            "Ganar peso",
-                                            "Mejorar salud"
-                                        ]} icon={<FontAwesomeIcon icon={faChartLine} />} onChange={(value) => handleInputChange("objetive", value)} />
-                                    </div>
-                                    <div className="form-group">
-                                        <Input type="text" label="Alergias" icon={<FontAwesomeIcon icon={faShrimp} />} value={formValues.allergies} onChange={(value) => handleInputChange("allergies", value)} />
-                                    </div>
-                                    <div className="form-group">
-                                        <Input type="text" label="Intolerancias" icon={<FontAwesomeIcon icon={faBrain} />} value={formValues.intolerances} onChange={(value) => handleInputChange("intolerances", value)} />
-                                    </div>
-                                    <div className="form-group">
-                                        <Select label="Preferencias Alimenticias" options={[
-                                            "Vegetariano",
-                                            "Vegano",
-                                            "Carnívoro",
-                                            "Keto",
-                                            "Paleo",
-                                            "Sin gluten",
-                                            "Sin lactosa",
-                                            "Sin azúcar"
-                                        ]} icon={<FontAwesomeIcon icon={faBowlFood} />} onChange={(value) => handleInputChange("food_preferences", value)} />
-                                    </div>
-                                </>
-                            )
-                        }
-                        
+                                            <div className="wizard-buttons">
+                                                <Button style="normal" text="Anterior" onClick={handlePrevStep} />
+                                                <Button style="normal" text="Siguiente" onClick={handleNextStep} />
+                                            </div>
+                                        </motion.div>
+                                    </>
+                                )
+                            }
 
+                            {
+                                step === 3 && (
+                                    <>
+                                        <motion.div
+                                            className="register-content"
+                                            key="step3"
+                                            initial="initial"
+                                            animate="animate"
+                                            exit="exit"
+                                            variants={stepVariants}
+                                            transition={{ duration: 0.3 }}
+                                        >
+                                            <div className="form-group">
+                                                <Select label="Objetivo" options={[
+                                                    "Perder peso",
+                                                    "Mantener peso",
+                                                    "Ganar peso",
+                                                    "Mejorar salud"
+                                                ]} icon={<FontAwesomeIcon icon={faChartLine} />} onChange={(value) => handleInputChange("objetive", value)} />
+                                            </div>
+                                            <div className="form-group">
+                                                <Input type="text" label="Alergias" icon={<FontAwesomeIcon icon={faShrimp} />} value={formValues.allergies} onChange={(value) => handleInputChange("allergies", value)} />
+                                            </div>
+                                            <div className="form-group">
+                                                <Input type="text" label="Intolerancias" icon={<FontAwesomeIcon icon={faBrain} />} value={formValues.intolerances} onChange={(value) => handleInputChange("intolerances", value)} />
+                                            </div>
+                                            <div className="form-group">
+                                                <Select label="Preferencias Alimenticias" options={[
+                                                    "Vegetariano",
+                                                    "Vegano",
+                                                    "Carnívoro",
+                                                    "Keto",
+                                                    "Paleo",
+                                                    "Sin gluten",
+                                                    "Sin lactosa",
+                                                    "Sin azúcar"
+                                                ]} icon={<FontAwesomeIcon icon={faBowlFood} />} onChange={(value) => handleInputChange("food_preferences", value)} />
+                                            </div>
 
-                        {/* <div className="form-group">
-                            <Button style="accept" text={"Crear cuenta"} />
-                        </div> */}
+                                            <div className="wizard-button">
+                                                <Button style="normal" text="Anterior" onClick={handlePrevStep} />
+                                            </div>
+
+                                            <div className="form-group">
+                                                <Button style="accept" text={"Crear cuenta"} />
+                                            </div>
+                                        </motion.div>
+                                    </>
+                                )
+                            }
+                        </AnimatePresence>
                     </form>
                 </div>
             </div>
