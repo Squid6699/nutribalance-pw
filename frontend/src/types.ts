@@ -3,6 +3,8 @@ export interface ButtonProps {
     icon?: any;
     style: "accept" | "normal";
     loading?: boolean;
+    disabled?: boolean;
+    onClick?: () => void;
 }
 
 export interface InputProps {
