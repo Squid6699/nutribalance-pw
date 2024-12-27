@@ -16,6 +16,8 @@ function Register() {
         document.title = "Nutribalance - Register";
     }, []);
 
+    const HOST = import.meta.env.VITE_HOST;
+
     const stepVariants = {
         initial: { opacity: 0, x: 100 },
         animate: { opacity: 1, x: 0 },
@@ -30,11 +32,43 @@ function Register() {
         weight: "",
         height: "",
         activity: "",
-        objetive: "",
+        objective: "",
         allergies: "",
         intolerances: "",
         food_preferences: ""
     });
+
+    const [loading, setLoading] = useState(false);
+    const [errorRegister, setErrorRegister] = useState("");
+
+    const [error, setError] = useState({
+        name: "",
+        email: "",
+        password: "",
+    });
+
+    useEffect(() => {
+        if (formValues.name !== "") {
+            setError((prev) => ({
+                ...prev,
+                name: "",
+            }));
+        }
+
+        if (formValues.email !== "") {
+            setError((prev) => ({
+                ...prev,
+                email: "",
+            }));
+        }
+
+        if (formValues.password !== "") {
+            setError((prev) => ({
+                ...prev,
+                password: "",
+            }));
+        }
+    },[formValues]);
 
     const handleInputChange = (field: string, value: string) => {
         setFormValues((prev) => ({
@@ -56,6 +90,54 @@ function Register() {
     const handleSubmitRegister = async (e: React.FormEvent) => {
         e.preventDefault();
 
+        if (formValues.name === "") {
+            setError((prev) => ({
+                ...prev,
+                name: "El nombre es obligatorio",
+            }));
+            return;
+        }
+
+        if (formValues.email === "") {
+            setError((prev) => ({
+                ...prev,
+                email: "El correo es obligatorio",
+            }));
+            return;
+        }
+
+        if (formValues.password === "") {
+            setError((prev) => ({
+                ...prev,
+                password: "La contraseña es obligatoria",
+            }));
+            return;
+        }
+
+        // Send data to backend
+        try {
+            setLoading(true);
+            const response = await fetch(`${HOST}api/auth/register`, {
+                method: "POST",
+                headers: {
+                    "x-frontend-header": "frontend",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({name: formValues.name, email: formValues.email, password: formValues.password, age: formValues.age, weight: formValues.weight, height: formValues.height, activity: formValues.activity, objective: formValues.objective, allergies: formValues.allergies, intolerances: formValues.intolerances, food_preferences: formValues.food_preferences}),
+                credentials: "include",
+            });
+
+            const data = await response.json();
+
+            if (data.success){
+                window.location.href = "/";
+            }else{
+                setLoading(false);
+                setErrorRegister(data.msg);
+            }
+        } catch (error) {
+            setLoading(false);
+        }
 
     }
 
@@ -80,13 +162,13 @@ function Register() {
                                             transition={{ duration: 0.3 }}
                                         >
                                             <div className="form-group">
-                                                <Input type="text" label="Nombre" icon={<FontAwesomeIcon icon={faUser} />} value={formValues.name} onChange={(value) => handleInputChange("name", value)} />
+                                                <Input type="text" label="Nombre" icon={<FontAwesomeIcon icon={faUser} />} value={formValues.name} onChange={(value) => handleInputChange("name", value)} error={error.name} />
                                             </div>
                                             <div className="form-group">
-                                                <Input type="text" label="Correo" icon={<FontAwesomeIcon icon={faEnvelope} />} value={formValues.email} onChange={(value) => handleInputChange("email", value)} />
+                                                <Input type="text" label="Correo" icon={<FontAwesomeIcon icon={faEnvelope} />} value={formValues.email} onChange={(value) => handleInputChange("email", value)} error={error.email}/>
                                             </div>
                                             <div className="form-group">
-                                                <Input type="password" label="Contraseña" icon={<FontAwesomeIcon icon={faLock} />} value={formValues.password} onChange={(value) => handleInputChange("password", value)} />
+                                                <Input type="password" label="Contraseña" icon={<FontAwesomeIcon icon={faLock} />} value={formValues.password} onChange={(value) => handleInputChange("password", value)}  error={error.password} />
                                             </div>
 
                                             <div className="wizard-button">
@@ -154,7 +236,7 @@ function Register() {
                                                     "Mantener peso",
                                                     "Ganar peso",
                                                     "Mejorar salud"
-                                                ]} icon={<FontAwesomeIcon icon={faChartLine} />} onChange={(value) => handleInputChange("objetive", value)} />
+                                                ]} icon={<FontAwesomeIcon icon={faChartLine} />} onChange={(value) => handleInputChange("objective", value)} />
                                             </div>
                                             <div className="form-group">
                                                 <Input type="text" label="Alergias" icon={<FontAwesomeIcon icon={faShrimp} />} value={formValues.allergies} onChange={(value) => handleInputChange("allergies", value)} />
@@ -180,7 +262,12 @@ function Register() {
                                             </div>
 
                                             <div className="form-group">
-                                                <Button style="accept" text={"Crear cuenta"} />
+                                                <Button style="accept" text={"Crear cuenta"} disabled={error.name !== "" || error.email !== "" || error.password !== ""} loading={loading} />
+                                            </div>
+                                            <div className="register-footer">
+                                                <div>
+                                                    <span className="msgError">{errorRegister}</span>
+                                                </div>
                                             </div>
                                         </motion.div>
                                     </>
