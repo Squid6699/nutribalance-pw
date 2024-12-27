@@ -17,7 +17,7 @@ routerApiAuthRegister.post("/register", async (req, res) => {
         email, 
         password,
         age, 
-        size, 
+        weight, 
         height, 
         activity, 
         objective,
@@ -31,9 +31,11 @@ routerApiAuthRegister.post("/register", async (req, res) => {
     }
 
     var profileCompleted = false;
-    if (age && size && height && activity && objective && allergies && intolerances && food_preferences){
+    if (age && weight && height && activity && objective && allergies && intolerances && food_preferences){
         profileCompleted = true;
     }
+
+    console.log(age, weight, height, activity, objective, allergies, intolerances, food_preferences);
 
     try {
         const existingUser = await Users.findOne({ email: email.toLowerCase() });
@@ -52,7 +54,7 @@ routerApiAuthRegister.post("/register", async (req, res) => {
             email: email.toLowerCase(),
             password: hashedPassword,
             age: age,
-            size: size,
+            weight: weight,
             height: height,
             activity: activity,
             objective: objective,
