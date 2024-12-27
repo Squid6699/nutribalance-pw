@@ -8,8 +8,9 @@ import { useEffect, useState } from "react";
 import { faBowlFood, faBrain, faChartLine, faHashtag, faScaleBalanced, faShrimp, faTextHeight } from "@fortawesome/free-solid-svg-icons";
 import Select from "../components/Select";
 import { AnimatePresence, motion } from "framer-motion";
+import Stepper from "../components/Stepper";
 
-function Register(){
+function Register() {
 
     useEffect(() => {
         document.title = "Nutribalance - Register";
@@ -37,12 +38,12 @@ function Register(){
 
     const handleInputChange = (field: string, value: string) => {
         setFormValues((prev) => ({
-          ...prev,
-          [field]: value,
+            ...prev,
+            [field]: value,
         }));
     };
 
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(0);
 
     const handleNextStep = () => {
         setStep(step + 1);
@@ -52,10 +53,10 @@ function Register(){
         setStep(step - 1);
     }
 
-    const handleSubmitRegister = async (e : React.FormEvent) => {
+    const handleSubmitRegister = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        
+
     }
 
     return (
@@ -63,10 +64,11 @@ function Register(){
             <div className="register-layout">
                 <div className="register-container">
                     <h1>Registarse</h1>
+                    <Stepper step={step} />
                     <form className="register-content" onSubmit={handleSubmitRegister}>
                         <AnimatePresence mode="wait">
                             {
-                                step === 1 && (
+                                step === 0 && (
                                     <>
                                         <motion.div
                                             className="register-content"
@@ -78,7 +80,7 @@ function Register(){
                                             transition={{ duration: 0.3 }}
                                         >
                                             <div className="form-group">
-                                                <Input type="text" label="Nombre" icon={<FontAwesomeIcon icon={faUser}  />} value={formValues.name} onChange={(value) => handleInputChange("name", value)} />
+                                                <Input type="text" label="Nombre" icon={<FontAwesomeIcon icon={faUser} />} value={formValues.name} onChange={(value) => handleInputChange("name", value)} />
                                             </div>
                                             <div className="form-group">
                                                 <Input type="text" label="Correo" icon={<FontAwesomeIcon icon={faEnvelope} />} value={formValues.email} onChange={(value) => handleInputChange("email", value)} />
@@ -96,7 +98,7 @@ function Register(){
                             }
 
                             {
-                                step === 2 && (
+                                step === 1 && (
                                     <>
                                         <motion.div
                                             className="register-content"
@@ -135,7 +137,7 @@ function Register(){
                             }
 
                             {
-                                step === 3 && (
+                                step === 2 && (
                                     <>
                                         <motion.div
                                             className="register-content"
