@@ -35,8 +35,6 @@ routerApiAuthRegister.post("/register", async (req, res) => {
         profileCompleted = true;
     }
 
-    console.log(age, weight, height, activity, objective, allergies, intolerances, food_preferences);
-
     try {
         const existingUser = await Users.findOne({ email: email.toLowerCase() });
         if (existingUser) {
