@@ -34,6 +34,22 @@ function Login(){
         }));
     };
 
+    useEffect(() => {
+        if (formValues.email !== "") {
+            setErrors((prev) => ({
+                ...prev,
+                email: "",
+            }));
+        }
+
+        if (formValues.password !== "") {
+            setErrors((prev) => ({
+                ...prev,
+                password: "",
+            }));
+        }
+    }, [formValues]);
+
     const handleSubmitLogin = async (e : React.FormEvent) => {
         e.preventDefault();
 
@@ -68,7 +84,6 @@ function Login(){
             const data = await response.json();
 
             if (data.success){
-                setLoading(false);
                 window.location.href = "/";
             }else{
                 setLoading(false);
