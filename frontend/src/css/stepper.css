@@ -33,7 +33,7 @@
 }
 
 .step.active .step-circle {
-    background-color: #4caf50;
+    background-color: var(--accept-color);
     color: white;
 }
 
@@ -44,5 +44,5 @@
 }
 
 .step.active .step-label {
-    color: #4caf50;
+    color: var(--accept-color);
 }
