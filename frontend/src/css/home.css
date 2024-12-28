@@ -3,10 +3,12 @@
     flex-direction: column;
     justify-content: center;
     padding-top: 25px;
+    align-items: center;
+    width: 100%;
 }
 
 .container-banner{
-    width: 100%;
+    width: 75%;
     height: 100%;
     border-radius: 10px;
     overflow: hidden;
@@ -15,12 +17,13 @@
 }
 
 .container-banner img {
-    width: 75%;
+    width: 100%;
     height: auto;
     border-radius: 10px;
 }
 
 .container-banner .title {
+    width: 100%;
     position: absolute;
     top: 25%;
     left: 50%;
@@ -35,5 +38,69 @@
     top: 85%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 30%;
+    width: 50%;
 }
+
+.container-home .container-why{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 75%;
+}
+
+.container-home .container-why .title{
+    font-weight: 1000;
+    font-size: 2rem;
+    color: var(--text-color);
+}
+
+.container-home .container-why span{
+    font-size: 1rem;
+    color: var(--text-color);
+    text-align: justify;
+}
+
+.container-home .container-features{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 75%;
+    gap: 20px;
+}
+
+.feature{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.feature .feature-image{
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.feature .feature-image img{
+    width: 100%;
+    height: 100%;
+}
+
+.feature .feature-title{
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.feature .feature-body{
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: justify;
+    color: #a0a0a0
+}
+
+
