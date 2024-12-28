@@ -78,9 +78,9 @@ function Header() {
                         </Link>
                     }
                     <hr />
-                    <li><Link to={"/"} onClick={() => setOffCanvas(false)}>Recetas</Link></li>
-                    <li><Link to={"/about"} onClick={() => setOffCanvas(false)}>Plan de dieta</Link></li>
-                    <li><Link to={"/contact"} onClick={() => setOffCanvas(false)}>Creador de recetas</Link></li>
+                    <li><Link to={"/recipes"} onClick={() => setOffCanvas(false)}>Recetas</Link></li>
+                    <li><Link to={"/plan_recipes"} onClick={() => setOffCanvas(false)}>Plan de dieta</Link></li>
+                    <li><Link to={"/create_recipes"} onClick={() => setOffCanvas(false)}>Creador de recetas</Link></li>
                 </ul>
             </div>
 
