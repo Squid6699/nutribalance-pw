@@ -6,7 +6,6 @@ function Input({
   label,
   icon,
   height,
-  width,
   value,
   readOnly = false,
   error,
@@ -32,7 +31,6 @@ function Input({
           readOnly={readOnly}
           style={{
             height: height,
-            width: width,
             paddingLeft: icon ? "30px" : "10px",
           }}
         />
