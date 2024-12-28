@@ -41,52 +41,63 @@ function Home() {
             </div>
 
             <section className="container-why">
-                <h1 className="title">Porque elegir Nutribalance</h1>
-                <span>
+                <span className="why-title">Porque elegir Nutribalance</span>
+                <span className="why-body">
                     Nutribalance es una aplicacion de nutricion y recetas que te ayuda a encontrar recetas
                     saludables y dietas personalizadas. Con mas de 100,000 recetas, puedes estar seguro de
-                    que encontraras algo que te guste y se ajuste a tus necesidadees nutricionales.
+                    que encontraras algo que te guste y se ajuste a tus necesidades nutricionales.
                 </span>
             </section>
 
             <section className="container-features">
                 <div className="feature">
                     <div className="feature-image">
-                        {/* <img src={chef} alt="Recetas saludables y deliciosas" /> */}
+                        <img src={chef} alt="Recetas saludables y deliciosas" />
                     </div>
-                    <span className="feature-title">
-                        Recetas saludables y deliciosas
-                    </span>
-                    <span className="feature-body">
-                        Descubre mas de 100,000 recetas saludables y deliciosas. Encuentra el tipo de receta que necesitas
-                        en funcion de tus objetivos nutricionales.
-                    </span>
+                    <div className="feature-title">
+                        <span>Recetas saludables y deliciosas</span>
+                    </div>
+                    <div className="feature-body">
+                        <span>
+                            Descubre mas de 100,000 recetas saludables y deliciosas. Encuentra el tipo de receta que necesitas
+                            en funcion de tus objetivos nutricionales.
+                        </span>
+                    </div>
                 </div>
 
                 <div className="feature">
                     <div className="feature-image">
-                        {/* <img src={plan_dieta} alt="Crear tu plan de dieta personalizada" /> */}
+                        <img src={plan_dieta} alt="Crear tu plan de dieta personalizada" />
                     </div>
-                    <span className="feature-title">
-                        Crea tu plan de dieta personalizada
-                    </span>
-                    <span className="feature-body">
-                        Obten recomendaciones de comidas diarias personalizadas en funcion de tus objetivos
-                        nutricionales y preferencias personales.
-                    </span>
+                    <div className="feature-title">
+                        <span>
+                            Crea tu plan de dieta personalizada
+                        </span>
+                    </div>
+                    <div className="feature-body">
+                        <span>
+                            Obten recomendaciones de comidas diarias personalizadas en funcion de tus objetivos
+                            nutricionales y preferencias personales.
+                        </span>
+                    </div>
                 </div>
 
                 <div className="feature">
                     <div className="feature-image">
-                        {/* <img src={receta_inteligente} alt="Creador de recetas inteligentes" /> */}
+                        <img src={receta_inteligente} alt="Creador de recetas inteligentes" />
                     </div>
-                    <span className="feature-title">
-                        Creador de recetas inteligentes
-                    </span>
-                    <span className="feature-body">
-                        Ingresa los ingredientes que tienes en casa y te diremos que recetas puedes hacer
-                        con ellos.
-                    </span>
+                    <div className="feature-title">
+                        <span>
+                            Creador de recetas inteligentes
+                        </span>
+                    </div>
+                    <div className="feature-body">
+                        <span>
+                            Ingresa los ingredientes que tienes en casa y te diremos que recetas puedes hacer
+                            con ellos.
+                        </span>
+                    </div>
+                    
                 </div>
             </section>
         </main>
