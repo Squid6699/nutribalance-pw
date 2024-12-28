@@ -38,7 +38,7 @@ function Home() {
             </div>
 
             <section className="container-why">
-                <span className="why-title">Porque elegir Nutribalance</span>
+                <span className="why-title">Por qué elegir Nutribalance</span>
                 <span className="why-body">
                     Nutribalance es una aplicacion de nutricion y recetas que te ayuda a encontrar recetas
                     saludables y dietas personalizadas. Con mas de 100,000 recetas, puedes estar seguro de
