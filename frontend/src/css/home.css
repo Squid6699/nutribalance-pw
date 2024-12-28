@@ -117,4 +117,18 @@
     color: #a0a0a0;
 }
 
+@media (width < 715px){
+    .container-home .container-features{
+        flex-direction: column;
+        gap: 40px;
+    }
 
+    .container-banner .title {
+        font-size: 1.0rem;
+    }
+    
+    .container-banner .banner-input{
+        top: 80%;
+        width: 75%;
+    }
+}
