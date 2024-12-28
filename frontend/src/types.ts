@@ -11,7 +11,6 @@ export interface InputProps {
     type?: "password" | "email" | "text" | "number";
     label: string;
     icon?: any;
-    width?: string;
     height?: string;
     value?: string | number | boolean;
     readOnly?: boolean;
