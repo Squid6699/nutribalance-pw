@@ -5,6 +5,9 @@ import { middleware } from "./middleware/middleware.js"
 import { connectDB } from "./db.js"
 import { routerApiAuthLogin } from "./routers/login.js";
 import { routerApiAuthRegister } from "./routers/register.js";
+import { routerApiCreateRecipes } from "./routers/create_recipes.js";
+import { routerApiGetRecipes } from "./routers/recipes.js";
+import { routerApiCreatePlanDiet } from "./routers/create_plan_diet.js";
 
 if (process.env.NODE_ENV === 'production') {
     dotenv.config({path: "./.env.production"});
@@ -46,6 +49,10 @@ app.post("/api/", (req, res) => {
 
 app.use("/api/auth/", routerApiAuthLogin);
 app.use("/api/auth/", routerApiAuthRegister);
+app.use("/", routerApiGetRecipes);
+app.use("/", routerApiCreatePlanDiet);
+app.use("/", routerApiCreateRecipes);
+
 
 app.listen(process.env.PUERTO, () => {
     console.log("Conectado backend");
