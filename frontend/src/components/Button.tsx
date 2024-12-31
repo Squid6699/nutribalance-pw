@@ -3,7 +3,7 @@ import "../css/button.css";
 import { ButtonProps } from "../types";
 import Spinner from "./Spinner";
 
-function Button({ text, icon, style, loading, disabled, onClick }: ButtonProps) {
+function Button({ text, icon, style, loading, disabled, onClick, styleButton }: ButtonProps) {
   return (
     <>
       {
@@ -18,7 +18,7 @@ function Button({ text, icon, style, loading, disabled, onClick }: ButtonProps) 
           }
         </button>
         :
-        <button className={style} disabled={loading || disabled} onClick={onClick}>
+        <button className={style} disabled={loading || disabled} onClick={onClick} style={styleButton}>
           {
             loading ?
               <Spinner />

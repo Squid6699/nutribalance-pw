@@ -5,6 +5,7 @@ export interface ButtonProps {
     loading?: boolean;
     disabled?: boolean;
     onClick?: () => void;
+    styleButton?: Object;
 }
 
 export interface InputProps {
