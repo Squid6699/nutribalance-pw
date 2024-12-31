@@ -1,5 +1,10 @@
-{
-    "name": "JUAN PEREZ",
-    "email": "correo@admin.com",
-    "password": "correo123"
-}
+[
+    {
+        "email": "correo@admin.com",
+        "password": "correo123"
+    },
+    {
+        "email": "juan@gmail.com",
+        "password": "juan123"
+    }
+]
