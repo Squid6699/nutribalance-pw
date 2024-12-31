@@ -8,7 +8,7 @@
 .container-profile-slide{
     display: flex;
     flex-direction: column;
-    width: 25%;
+    width: 20%;
     gap: 20px;
     min-width: 176px;
 }
