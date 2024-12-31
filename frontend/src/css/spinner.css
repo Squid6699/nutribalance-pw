@@ -1,18 +1,18 @@
 .spinner-container {
   display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  width: 100%; /* Asegúrate de que ocupe todo el ancho */
-  height: 100%; /* Asegúrate de que ocupe todo el alto del área disponible */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .spinner {
-  border: 2px solid rgba(0, 0, 0, 0.1); /* Color del fondo */
-  border-left-color: #ffffff; /* Color de la animación */
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #ffffff;
   border-radius: 50%;
   width: 20px;
   height: 20px;
-  animation: spin 1s linear infinite; /* Animación de giro */
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
