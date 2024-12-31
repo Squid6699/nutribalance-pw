@@ -6,6 +6,7 @@
   --accept-color: #1fdf25;
   --normal-color: #e8f3e9;
   --text-color: #0e1b10;
+  --hover-color: #f0f0f0;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -14,7 +15,6 @@
 body {
   margin: 0;
   display: flex;
-  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
   background-color: var(--bg-color);
