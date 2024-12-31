@@ -40,7 +40,7 @@ function Header() {
                             <Button text="Iniciar sesión" style="normal" />
                         </Link>
                         :
-                        <Link to={"/profile/view"}>
+                        <Link to={"/profile"}>
                             <Button style="normal" icon={<FontAwesomeIcon icon={faUser} />} />
                         </Link>
                     }

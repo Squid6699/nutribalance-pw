@@ -3,6 +3,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     padding-top: 25px;
+    gap: 10px;
 }
 
 .container-profile-slide{
@@ -91,4 +92,9 @@
 .profile-info-data .profile-info-data-item .dinamic-text, .profile-item span {
     font-weight: 400;
     font-size: 1rem;
+}
+
+.ProfileError{
+    width: 85%;
+    text-align: center;
 }
