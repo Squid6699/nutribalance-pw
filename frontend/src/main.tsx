@@ -7,13 +7,14 @@ import { BrowserRouter } from "react-router-dom";
 
 import { QueryClient, QueryClientProvider } from "react-query";
 import { SessionProvider } from "./context/session.tsx";
-// import { ReactQueryDevtools } from "react-query/devtools";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       enabled: true,
       refetchInterval: 60000,
+      refetchOnWindowFocus: false,
     },
   },
 });
@@ -24,7 +25,7 @@ createRoot(document.getElementById("root")!).render(
       <SessionProvider>
         <QueryClientProvider client={queryClient}>
           <App />
-          {/* <ReactQueryDevtools/> */}
+          <ReactQueryDevtools/>
         </QueryClientProvider>
       </SessionProvider>
     </BrowserRouter>
