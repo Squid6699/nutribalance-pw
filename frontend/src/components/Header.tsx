@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Button from "./Button";
 import { useSesion } from "../hook/useSesion.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
     const { email } = useSesion();
@@ -40,7 +40,7 @@ function Header() {
                             <Button text="Iniciar sesión" style="normal" />
                         </Link>
                         :
-                        <Link to={"/profile"}>
+                        <Link to={"/profile/view"}>
                             <Button style="normal" icon={<FontAwesomeIcon icon={faUser} />} />
                         </Link>
                     }
