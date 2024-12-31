@@ -5,7 +5,7 @@ import "../css/register.css";
 import { faEnvelope, faUser } from "@fortawesome/free-regular-svg-icons";
 import { faLock } from "@fortawesome/free-solid-svg-icons/faLock";
 import { useEffect, useState } from "react";
-import { faBowlFood, faBrain, faChartLine, faHashtag, faScaleBalanced, faShrimp, faTextHeight } from "@fortawesome/free-solid-svg-icons";
+import { faBowlFood, faBrain, faChartLine, faHashtag, faPerson, faScaleBalanced, faShrimp, faTextHeight } from "@fortawesome/free-solid-svg-icons";
 import Select from "../components/Select";
 import { AnimatePresence, motion } from "framer-motion";
 import Stepper from "../components/Stepper";
@@ -26,6 +26,7 @@ function Register() {
 
     const [formValues, setFormValues] = useState({
         name: "",
+        sex: "",
         email: "",
         password: "",
         age: "",
@@ -123,7 +124,7 @@ function Register() {
                     "x-frontend-header": "frontend",
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({name: formValues.name, email: formValues.email, password: formValues.password, age: formValues.age, weight: formValues.weight, height: formValues.height, activity: formValues.activity, objective: formValues.objective, allergies: formValues.allergies, intolerances: formValues.intolerances, food_preferences: formValues.food_preferences}),
+                body: JSON.stringify({name: formValues.name, sex: formValues.sex ,email: formValues.email, password: formValues.password, age: formValues.age, weight: formValues.weight, height: formValues.height, activity: formValues.activity, objective: formValues.objective, allergies: formValues.allergies, intolerances: formValues.intolerances, food_preferences: formValues.food_preferences}),
                 credentials: "include",
             });
 
@@ -163,6 +164,12 @@ function Register() {
                                         >
                                             <div className="form-group">
                                                 <Input type="text" label="Nombre" icon={<FontAwesomeIcon icon={faUser} />} value={formValues.name} onChange={(value) => handleInputChange("name", value)} error={error.name} />
+                                            </div>
+                                            <div className="form-group">
+                                                <Select label="Sexo" options={[
+                                                    "Hombre",
+                                                    "Mujer"
+                                                ]} icon={<FontAwesomeIcon icon={faPerson} />} onChange={(value) => handleInputChange("sex", value)} />
                                             </div>
                                             <div className="form-group">
                                                 <Input type="text" label="Correo" icon={<FontAwesomeIcon icon={faEnvelope} />} value={formValues.email} onChange={(value) => handleInputChange("email", value)} error={error.email}/>
