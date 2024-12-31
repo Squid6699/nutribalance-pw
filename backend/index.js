@@ -8,6 +8,8 @@ import { routerApiAuthRegister } from "./routers/register.js";
 import { routerApiCreateRecipes } from "./routers/create_recipes.js";
 import { routerApiGetRecipes } from "./routers/recipes.js";
 import { routerApiCreatePlanDiet } from "./routers/create_plan_diet.js";
+import { routerApiGetDataUser } from "./routers/get_user.js";
+import { routerApiLogOut } from "./routers/logout.js";
 
 if (process.env.NODE_ENV === 'production') {
     dotenv.config({path: "./.env.production"});
@@ -49,9 +51,12 @@ app.post("/api/", (req, res) => {
 
 app.use("/api/auth/", routerApiAuthLogin);
 app.use("/api/auth/", routerApiAuthRegister);
-app.use("/", routerApiGetRecipes);
-app.use("/", routerApiCreatePlanDiet);
-app.use("/", routerApiCreateRecipes);
+app.use("/api/", routerApiGetRecipes);
+app.use("/api/", routerApiCreatePlanDiet);
+app.use("/api/", routerApiCreateRecipes);
+app.use("/api/", routerApiGetDataUser);
+app.use("/api/", routerApiLogOut);
+
 
 
 app.listen(process.env.PUERTO, () => {
