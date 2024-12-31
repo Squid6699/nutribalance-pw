@@ -14,9 +14,10 @@ routerApiAuthRegister.post("/register", async (req, res) => {
     
     const {
         name, 
+        sex,
         email, 
         password,
-        age, 
+        age,
         weight, 
         height, 
         activity, 
@@ -31,7 +32,7 @@ routerApiAuthRegister.post("/register", async (req, res) => {
     }
 
     var profileCompleted = false;
-    if (age && weight && height && activity && objective && allergies && intolerances && food_preferences){
+    if (age && sex && weight && height && activity && objective && food_preferences){
         profileCompleted = true;
     }
 
@@ -49,6 +50,7 @@ routerApiAuthRegister.post("/register", async (req, res) => {
 
         const newUser = new Users({
             name: name.toUpperCase(),
+            sex: sex,
             email: email.toLowerCase(),
             password: hashedPassword,
             age: age,
