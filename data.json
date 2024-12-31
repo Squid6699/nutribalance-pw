@@ -6,5 +6,23 @@
     {
         "email": "juan@gmail.com",
         "password": "juan123"
+    },
+    {
+        "name": "JUAN PABLO SANCHEZ MARTINEZ",
+        "email": "juan@gmail.com",
+        "password": "$2b$10$bXlBVJc6G6YVd/WtV33/Defq3e9sADYEk1mwmp7W8WBiYvFrvDLuO",
+        "age": "22",
+        "sex": "Hombre",
+        "weight": "78",
+        "height": "177",
+        "activity": "Moderado",
+        "objective": "Mantener peso",
+        "allergies": "",
+        "intolerances": "",
+        "food_preferences": "Carnívoro",
+        "autorization": false,
+        "profileCompleted": true
     }
 ]
+
+
