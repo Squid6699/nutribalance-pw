@@ -1,0 +1,94 @@
+.container-profile{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding-top: 25px;
+}
+
+.container-profile-slide{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    gap: 20px;
+    min-width: 176px;
+}
+
+.profile-slide .profile-item{
+    height: 40px;
+    align-content: center;
+    padding-left: 20px;
+
+}
+
+.profile-slide .profile-item:hover{
+    cursor: pointer;
+    background-color: var(--hover-color);
+    border-radius: 10px;
+}
+
+.profile-data-info{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 80%;
+}
+
+.profile-data-info .profile-data{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+    height: 150px;
+}
+
+.profile-data-info .profile-data .profile-image{
+    text-align: center;
+    width: 25%;
+    height: 100%;
+}
+
+.profile-data-info .profile-data .profile-image img{
+    width: auto;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.profile-data-info .profile-data .profile-user{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.profile-data-info .profile-data .profile-user .profile-name{
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.profile-data-info .profile-data .profile-user .profile-email{
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #8e8e8e;
+}
+
+.profile-data-info .profile-data .profile-button{
+    padding-right: 20px;
+    width: 25%;
+}
+
+.profile-info-data{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.profile-info-data .profile-info-data-item .static-text {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.profile-info-data .profile-info-data-item .dinamic-text, .profile-item span {
+    font-weight: 400;
+    font-size: 1rem;
+}
