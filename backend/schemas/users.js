@@ -8,7 +8,8 @@ const UsersSchema = new mongoose.Schema({
     },
     password: String,
     age: String,
-    size: String,
+    sex: String,
+    weight: String,
     height: String,
     activity: String,
     objective: String,
@@ -22,7 +23,8 @@ const UsersSchema = new mongoose.Schema({
     profileCompleted: {
         type: Boolean,
         default: false
-    }
+    },
+    imageProfile: String
 }, { versionKey: false });
 
 export const Users = mongoose.model('users', UsersSchema);
