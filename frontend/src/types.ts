@@ -23,5 +23,6 @@ export interface SelectProps {
     options: string[];
     label: string;
     icon?: any;
+    value?: string | number | boolean;
     onChange?: (value: string) => void;
 }

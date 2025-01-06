@@ -2,8 +2,8 @@ import { useState } from "react";
 import "../css/Select.css";
 import { SelectProps } from "../types";
 
-function Select({ options, label, icon, onChange }: SelectProps) {
-  const [inputValue, setInputValue] = useState("");
+function Select({ options, label, icon, value, onChange }: SelectProps) {
+  const [inputValue, setInputValue] = useState(value);
   const [filteredOptions, setFilteredOptions] = useState(options);
   const [isListVisible, setIsListVisible] = useState(false);
 
@@ -29,6 +29,11 @@ function Select({ options, label, icon, onChange }: SelectProps) {
 
   const handleBlur = () => {
     setTimeout(() => setIsListVisible(false), 200); // Retraso para permitir selección
+    if (!options.includes(inputValue)){
+      setInputValue("");
+      setFilteredOptions(options);
+    }
+    
   };
 
   return (

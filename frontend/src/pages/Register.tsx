@@ -169,7 +169,7 @@ function Register() {
                                                 <Select label="Sexo" options={[
                                                     "Hombre",
                                                     "Mujer"
-                                                ]} icon={<FontAwesomeIcon icon={faPerson} />} onChange={(value) => handleInputChange("sex", value)} />
+                                                ]} icon={<FontAwesomeIcon icon={faPerson} />} value={formValues.sex} onChange={(value) => handleInputChange("sex", value)} />
                                             </div>
                                             <div className="form-group">
                                                 <Input type="text" label="Correo" icon={<FontAwesomeIcon icon={faEnvelope} />} value={formValues.email} onChange={(value) => handleInputChange("email", value)} error={error.email}/>
@@ -213,7 +213,7 @@ function Register() {
                                                     "Moderado",
                                                     "Activo",
                                                     "Muy activo"
-                                                ]} icon={<FontAwesomeIcon icon={faChartLine} />} onChange={(value) => handleInputChange("activity", value)} />
+                                                ]} icon={<FontAwesomeIcon icon={faChartLine} />} value={formValues.activity} onChange={(value) => handleInputChange("activity", value)} />
                                             </div>
 
                                             <div className="wizard-buttons">
@@ -243,7 +243,7 @@ function Register() {
                                                     "Mantener peso",
                                                     "Ganar peso",
                                                     "Mejorar salud"
-                                                ]} icon={<FontAwesomeIcon icon={faChartLine} />} onChange={(value) => handleInputChange("objective", value)} />
+                                                ]} icon={<FontAwesomeIcon icon={faChartLine} />} value={formValues.objective} onChange={(value) => handleInputChange("objective", value)} />
                                             </div>
                                             <div className="form-group">
                                                 <Input type="text" label="Alergias" icon={<FontAwesomeIcon icon={faShrimp} />} value={formValues.allergies} onChange={(value) => handleInputChange("allergies", value)} />
@@ -261,7 +261,7 @@ function Register() {
                                                     "Sin gluten",
                                                     "Sin lactosa",
                                                     "Sin azúcar"
-                                                ]} icon={<FontAwesomeIcon icon={faBowlFood} />} onChange={(value) => handleInputChange("food_preferences", value)} />
+                                                ]} icon={<FontAwesomeIcon icon={faBowlFood} />} value={formValues.food_preferences} onChange={(value) => handleInputChange("food_preferences", value)} />
                                             </div>
 
                                             <div className="wizard-button">
