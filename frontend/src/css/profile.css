@@ -1,9 +1,16 @@
+.container-profile-app{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
 .container-profile{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     gap: 10px;
-    height: 90vh;
+    width: 100%;
 }
 
 .container-profile-slide{
@@ -98,4 +105,36 @@
 .ProfileError{
     width: 85%;
     text-align: center;
+}
+
+@media (width < 776px){
+    .container-profile{
+        flex-direction: column-reverse;
+        gap: 40px;
+    }
+
+    .profile-data-info{
+        width: 80%;
+        align-self: center;
+    }
+
+    .profile-data-info .profile-data .profile-image{
+        width: auto;
+        height: 50%;
+        border-radius: 50%;
+    }
+
+    .profile-data-info .profile-data .profile-user .profile-name{
+        font-size: 0.9rem;
+    }
+
+    .profile-data-info .profile-data .profile-button{
+        padding-right: 0px;
+        width: 25%;
+    }
+
+    .container-profile-slide{
+        width: 100%;
+    }
+
 }

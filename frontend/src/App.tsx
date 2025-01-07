@@ -12,18 +12,21 @@ function App() {
 
   return (
     <>
-      <Header/>
-      <Routes>
-        <Route path="/auth/login" element={<Login />} />
-        <Route path="/auth/register" element={<Register />} />
-        <Route path="/profile" element={<ProfileData />} />
-        <Route path="/profile/recipes-save" element={<RecipesSaves />} />
-        <Route path="/profile/diet-plan" element={<DietPlan />} />
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/register" element={<Register />} />
+          <Route path="/profile" element={<ProfileData />} />
+          <Route path="/profile/recipes-save" element={<RecipesSaves />} />
+          <Route path="/profile/diet-plan" element={<DietPlan />} />
 
-        <Route path="/" element={<Home />} />
-      </Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </main>
+
       <footer>
-        <Footer/>
+        <Footer />
       </footer>
     </>
   );

@@ -2,7 +2,7 @@
 function Footer(){
     return(
         <>
-            <p style={{textAlign: "center", color: "#ccc"}}>
+            <p>
                 All rights reserved 2024 © - Nutribalance
             </p>
         </>

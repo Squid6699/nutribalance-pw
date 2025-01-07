@@ -26,7 +26,7 @@ function Home() {
     }
 
     return (
-        <main className="container-home">
+        <section className="container-home">
             <div className="container-banner">
                 <img src={banner} alt="Porque elegir Nutribalance" />
                 <h1 className="title">Encuentra recetas saludables y dietas personalizables</h1>
@@ -97,7 +97,7 @@ function Home() {
                     
                 </div>
             </section>
-        </main>
+        </section>
     );
 }
 
