@@ -26,10 +26,10 @@ function Header() {
                             <Link to={"/"}><span>Recetas</span></Link>
                         </li>
                         <li>
-                            <Link to={"/about"}><span>Plan de dieta</span></Link>
+                            <Link to={"/"}><span>Plan de dieta</span></Link>
                         </li>
                         <li>
-                            <Link to={"/contact"}><span>Creador de recetas</span></Link>
+                            <Link to={"/"}><span>Creador de recetas</span></Link>
                         </li>
                     </ul>
                 </nav>
