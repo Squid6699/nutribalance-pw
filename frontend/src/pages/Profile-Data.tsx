@@ -80,7 +80,7 @@ function ProfileData() {
 
                                         <div className="profile-info-data-item">
                                             <span className="static-text">Peso: </span>
-                                            <span className="dinamic-text">{dataUser?.weight}</span>
+                                            <span className="dinamic-text">{dataUser?.weight} Kg</span>
                                         </div>
                                     </div>
 
