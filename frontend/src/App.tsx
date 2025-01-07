@@ -3,7 +3,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Header from "./components/Header";
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
 import ProfileData from "./pages/Profile-Data";
 import RecipesSaves from "./pages/Profile-Recipes-Saves";
 import DietPlan from "./pages/Profile-Diet-Plan";
@@ -22,9 +22,9 @@ function App() {
 
         <Route path="/" element={<Home />} />
       </Routes>
-      {/* <footer>
+      <footer>
         <Footer/>
-      </footer> */}
+      </footer>
     </>
   );
 }

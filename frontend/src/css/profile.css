@@ -3,6 +3,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     gap: 10px;
+    height: 90vh;
 }
 
 .container-profile-slide{
@@ -11,6 +12,7 @@
     width: 20%;
     gap: 20px;
     min-width: 176px;
+    justify-content: space-between;
 }
 
 .profile-slide .profile-item{
