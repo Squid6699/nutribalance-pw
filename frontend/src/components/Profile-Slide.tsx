@@ -1,13 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faUserTie } from "@fortawesome/free-solid-svg-icons";
 import { faPlateWheat } from "@fortawesome/free-solid-svg-icons/faPlateWheat";
 import { faBookOpen } from "@fortawesome/free-solid-svg-icons/faBookOpen";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import { useState } from "react";
+import { useSesion } from "../hook/useSesion";
 
 function ProfileSlide() {
     const HOST = import.meta.env.VITE_HOST;
+    const {autorization} = useSesion();
     const [logOutLoading, setLogOutLoading] = useState(false);
 
     const logOut = async () => {
@@ -53,6 +55,12 @@ function ProfileSlide() {
                             <span><FontAwesomeIcon icon={faPlateWheat} /> Plan de dieta</span>
                         </div>
                     </Link>
+
+                    {autorization && <Link to={"/profile/diet-plan"}>
+                        <div className="profile-item">
+                            <span><FontAwesomeIcon icon={faUserTie} /> Administrar</span>
+                        </div>
+                    </Link>}
                 </div>
 
                 <div className="profile-button-outlog">

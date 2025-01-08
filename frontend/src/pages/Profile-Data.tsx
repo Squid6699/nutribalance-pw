@@ -116,7 +116,7 @@ function ProfileData() {
 
                                             <div className="profile-info-data-item">
                                                 <span className="static-text">Preferencias Alimenticias: </span>
-                                                <span className="dinamic-text">{dataUser?.food_preferences}</span>
+                                                <span className="dinamic-text">{dataUser?.food_preferences ? dataUser?.food_preferences : "Sin preferencias alimenticias"}</span>
                                             </div>
 
                                         </div>
