@@ -28,6 +28,9 @@ function ProfileSlide() {
             if (data.success) {
                 setLogOutLoading(false);
                 window.location.href = "/";
+            }else{
+                setLogOutLoading(false);
+                window.location.href = "/";
             }
         } catch (error) { setLogOutLoading(false); }
     }
