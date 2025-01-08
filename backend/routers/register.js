@@ -39,11 +39,11 @@ routerApiAuthRegister.post("/register", async (req, res) => {
     try {
         const existingUser = await Users.findOne({ email: email.toLowerCase() });
         if (existingUser) {
-            return res.status(409).json({ msg: "EMAIL ALREADY REGISTERED" });
+            return res.status(409).json({success: false, msg: "EMAIL ALREADY REGISTERED" });
         }
         
         if (password.length < 7){
-            return res.status(400).json({msg: "SHORT PASSWORD"});
+            return res.status(400).json({success: false, msg: "SHORT PASSWORD"});
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);

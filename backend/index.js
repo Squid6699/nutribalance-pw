@@ -10,6 +10,7 @@ import { routerApiGetRecipes } from "./routers/recipes.js";
 import { routerApiCreatePlanDiet } from "./routers/create_plan_diet.js";
 import { routerApiGetDataUser } from "./routers/get_user.js";
 import { routerApiLogOut } from "./routers/logout.js";
+import { routerApiEditProfile } from "./routers/edit_profile.js";
 
 if (process.env.NODE_ENV === 'production') {
     dotenv.config({path: "./.env.production"});
@@ -56,7 +57,7 @@ app.use("/api/", routerApiCreatePlanDiet);
 app.use("/api/", routerApiCreateRecipes);
 app.use("/api/", routerApiGetDataUser);
 app.use("/api/", routerApiLogOut);
-
+app.use("/api/", routerApiEditProfile);
 
 
 app.listen(process.env.PUERTO, () => {
