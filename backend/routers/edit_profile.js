@@ -1,5 +1,6 @@
 import express from "express";
 import { Users } from "../schemas/users.js";
+import jwt from "jsonwebtoken";
 
 export const routerApiEditProfile = express.Router();
 
@@ -22,6 +23,7 @@ routerApiEditProfile.put("/editprofile", async (req, res) => {
         allergies,
         intolerances,
         food_preferences,
+        profileImage
     } = req.body;
 
     if (!name || !email) {
@@ -33,56 +35,67 @@ routerApiEditProfile.put("/editprofile", async (req, res) => {
         profileCompleted = true;
     }
 
-    const existingUser = await Users.findOne({ email: email.toLowerCase() });
-    if (existingUser) {
-        return res.status(409).json({ success: false, msg: "EMAIL ALREADY REGISTERED" });
-    }
+    try {
 
-    const updateUser = await Users.findOneAndUpdate({ email: email.toLowerCase() }, {
-        name: name.toUpperCase(),
-        sex: sex,
-        email: email.toLowerCase(),
-        age: age,
-        weight: weight,
-        height: height,
-        activity: activity,
-        objective: objective,
-        allergies: allergies,
-        intolerances: intolerances,
-        food_preferences: food_preferences,
-        profileCompleted: profileCompleted,
-    })
-
-    const updatedUser = await updateUser.save();
-
-    if (updatedUser) {
-
-        const tokenCurrent = req.cookies.session;
-
-        if (!tokenCurrent){
-            return res.json({success: false, msg: "OCURRED ERROR TRY LATER"});
+        const token = req.cookies.session;
+        if (!token) {
+            return res.json({ success: false, msg: "OCURRED ERROR TRY LATER" });
         }
 
-        res.clearCookie("session", token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-        });
+        const verified = jwt.verify(token, process.env.SECRET_KEY);
+        const userEmail = verified.email;
 
-        const token = jwt.sign({ name: userAdd.name, email: userAdd.email, autorization: userAdd.autorization }, process.env.SECRET_KEY, {
-            expiresIn: process.env.EXPIRED,
-        });
+        if (email !== userEmail){
+            const existingUser = await Users.findOne({ email: email.toLowerCase() });
 
-        res.cookie("session", token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "strict",
-        });
-        res.json({ success: true, name: userAdd.name, email: userAdd.email, autorization: userAdd.autorization });
+            if (existingUser) {
+                return res.status(409).json({ success: false, msg: "EMAIL ALREADY REGISTERED" });
+            }
+        }
 
-    }
+        const updateUser = await Users.findOneAndUpdate({ email: userEmail.toLowerCase() }, {
+            name: name.toUpperCase(),
+            sex: sex,
+            email: email.toLowerCase(),
+            age: age,
+            weight: weight,
+            height: height,
+            activity: activity,
+            objective: objective,
+            allergies: allergies,
+            intolerances: intolerances,
+            food_preferences: food_preferences,
+            profileCompleted: profileCompleted,
+            imageProfile: profileImage,
+        })
 
+        const updatedUser = await updateUser.save();
 
-    try {
+        if (updatedUser) {
+
+            const tokenCurrent = req.cookies.session;
+
+            if (!tokenCurrent) {
+                return res.json({ success: false, msg: "OCURRED ERROR TRY LATER" });
+            }
+
+            res.clearCookie("session", tokenCurrent, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === "production",
+            });
+
+            const tokenNew = jwt.sign({ name: updatedUser.name, email: updatedUser.email, autorization: updatedUser.autorization }, process.env.SECRET_KEY, {
+                expiresIn: process.env.EXPIRED,
+            });
+
+            res.cookie("session", tokenNew, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === "production",
+                sameSite: "strict",
+            });
+            res.json({ success: true, name: updatedUser.name, email: updatedUser.email, autorization: updatedUser.autorization });
+
+        }
 
     } catch (error) {
         return res.json({ success: false, msg: "ERROR OCCURRED TRY LATER" })
