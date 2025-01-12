@@ -40,6 +40,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
     width: 80%;
+    padding-right: 20px;
 }
 
 .profile-data-info .profile-data{
@@ -116,6 +117,7 @@
     .profile-data-info{
         width: 80%;
         align-self: center;
+        padding-right: 0px;
     }
 
     .profile-data-info .profile-data .profile-image{
@@ -145,3 +147,8 @@
 }
 
 /* PROFILE EDIT */
+.imgEditProfile{
+    width: auto;
+    height: 25%;
+    border-radius: 50%;
+}
