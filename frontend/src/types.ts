@@ -26,3 +26,20 @@ export interface SelectProps {
     value?: string | number | boolean;
     onChange?: (value: string) => void;
 }
+
+export interface ProfileEditProp {
+    data: {
+        name: string;
+        sex: string;
+        email: string;
+        age: string;
+        weight: string;
+        height: string;
+        activity: string;
+        objective: string;
+        allergies: string;
+        intolerances: string;
+        food_preferences: string;
+        imageProfile: string;
+    };
+}
