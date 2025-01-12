@@ -48,7 +48,7 @@ function ProfileData() {
                                         <>
                                             <section className="profile-data">
                                                 <div className="profile-image">
-                                                    <img src={img} alt="" />
+                                                    <img src={dataUser?.imageProfile || img} alt="" />
                                                 </div>
 
                                                 <div className="profile-user">
