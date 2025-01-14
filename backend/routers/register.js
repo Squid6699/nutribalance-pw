@@ -80,7 +80,6 @@ routerApiAuthRegister.post("/register", async (req, res) => {
 
         }
     } catch (error) {
-        console.log(error);
         return res.json({success: false, msg: "ERROR OCCURRED TRY LATER"});
     }
 })
