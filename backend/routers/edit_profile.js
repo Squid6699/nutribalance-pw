@@ -23,7 +23,7 @@ routerApiEditProfile.put("/editprofile", async (req, res) => {
         allergies,
         intolerances,
         food_preferences,
-        profileImage
+        imageProfile
     } = req.body;
 
     if (!name || !email) {
@@ -66,7 +66,7 @@ routerApiEditProfile.put("/editprofile", async (req, res) => {
             intolerances: intolerances,
             food_preferences: food_preferences,
             profileCompleted: profileCompleted,
-            imageProfile: profileImage,
+            imageProfile: imageProfile,
         })
 
         const updatedUser = await updateUser.save();

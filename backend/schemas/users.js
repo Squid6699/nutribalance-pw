@@ -24,7 +24,10 @@ const UsersSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    imageProfile: String
+    imageProfile: {
+        type: String,
+        default: "/uploads/user-default.png"
+    }
 }, { versionKey: false });
 
 export const Users = mongoose.model('users', UsersSchema);

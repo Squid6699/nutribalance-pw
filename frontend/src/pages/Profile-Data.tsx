@@ -1,5 +1,4 @@
 import Button from "../components/Button";
-import img from "../assets/user-default.png";
 import { useQuery } from "react-query";
 import { useState } from "react";
 import "../css/profile.css";
@@ -48,7 +47,7 @@ function ProfileData() {
                                         <>
                                             <section className="profile-data">
                                                 <div className="profile-image">
-                                                    <img src={dataUser?.imageProfile || img} alt="" />
+                                                    <img src={HOST + dataUser?.imageProfile} alt="" />
                                                 </div>
 
                                                 <div className="profile-user">

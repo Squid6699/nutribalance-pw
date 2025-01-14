@@ -5,7 +5,6 @@ import { useState } from "react";
 import { ProfileEditProp } from "../types";
 import Select from "../components/Select";
 import { faChartLine, faHashtag, faPerson, faScaleBalanced, faTextHeight } from "@fortawesome/free-solid-svg-icons";
-import img from "../assets/user-default.png";
 import Button from "../components/Button";
 import { useSesion } from "../hook/useSesion";
 
@@ -25,8 +24,11 @@ function ProfileEdit({ data }: ProfileEditProp) {
         allergies: data.allergies || "",
         intolerances: data.intolerances || "",
         food_preferences: data.food_preferences || "",
-        imageProfile: data.imageProfile || img
+        imageProfile: HOST + data?.imageProfile
     });
+
+    const [imgUploaded, setImgUpdloaded] = useState<File>();
+    const [imagePreview, setImagePreview] = useState<string>(formValues.imageProfile);
 
     const [error, setError] = useState({
         name: "",
@@ -47,11 +49,10 @@ function ProfileEdit({ data }: ProfileEditProp) {
 
         if (file && (file.type === "image/png" || file.type === "image/jpeg" || file.type === "image/jpg")) {
             const imageUrl = URL.createObjectURL(file);
-            setFormValues((prev) => ({
-                ...prev,
-                imageProfile: imageUrl,
-            }));
+            setImagePreview(imageUrl);
+            setImgUpdloaded(file);
             return () => URL.revokeObjectURL(imageUrl);
+
         } else {
             setError((prev) => ({
                 ...prev,
@@ -80,16 +81,39 @@ function ProfileEdit({ data }: ProfileEditProp) {
         }
 
 
-        //BACKEND CALL
         try {
             setLoading(true);
+            const formData = new FormData();
+            
+            if (imgUploaded) {
+                formData.append("image", imgUploaded);
+            }
+
+            const responseImg = await fetch(HOST + "api/uploadimage", {
+                method: "PUT",
+                headers: {
+                    "x-frontend-header": "frontend",
+                },
+                body: formData,
+                credentials: "include"
+            })
+
+            const dataImg = await responseImg.json();
+
+            if (!dataImg){
+                setError((prev) => ({
+                    ...prev,
+                    uploadProfile: data.msg
+                }))
+            }
+
             const response = await fetch(HOST + "api/editprofile", {
                 method: "PUT",
                 headers: {
                     "x-frontend-header": "frontend",
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ name: formValues.name, sex: formValues.sex, email: formValues.email, age: formValues.age, weight: formValues.weight, height: formValues.height, activity: formValues.activity, objective: formValues.objective, allergies: formValues.allergies, intolerances: formValues.intolerances, food_preferences: formValues.food_preferences, profileImage: formValues.imageProfile }),
+                body: JSON.stringify({ name: formValues.name, sex: formValues.sex, email: formValues.email, age: formValues.age, weight: formValues.weight, height: formValues.height, activity: formValues.activity, objective: formValues.objective, allergies: formValues.allergies, intolerances: formValues.intolerances, food_preferences: formValues.food_preferences, imageProfile: dataImg.filePath}),
                 credentials: "include"
             });
 
@@ -118,7 +142,7 @@ function ProfileEdit({ data }: ProfileEditProp) {
         <>
             <h1>Edit Profile</h1>
             <form className="form-editProfile" onSubmit={handleSubmitFormEditProfile}>
-                <img className="imgEditProfile" src={formValues.imageProfile} alt="" />
+                <img className="imgEditProfile" src={imagePreview} alt="" />
                 <div className="form-group">
                     <input type="file" accept=".png, .jpg, .jpeg" onChange={(event) => handleImgChange(event)} />
                 </div>
