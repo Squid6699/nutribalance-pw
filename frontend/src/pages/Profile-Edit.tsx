@@ -10,7 +10,7 @@ import { useSesion } from "../hook/useSesion";
 
 function ProfileEdit({ data }: ProfileEditProp) {
     const HOST = import.meta.env.VITE_HOST;
-    const {setName, setEmail} = useSesion();
+    const { setName, setEmail } = useSesion();
     const [loading, setLoading] = useState(false);
     const [formValues, setFormValues] = useState({
         name: data.name || "",
@@ -63,6 +63,7 @@ function ProfileEdit({ data }: ProfileEditProp) {
 
     const handleSubmitFormEditProfile = async (event: React.FormEvent) => {
         event.preventDefault();
+        console.log("aaaaaaa")
 
         if (formValues.name === "") {
             setError((prev) => ({
@@ -84,7 +85,7 @@ function ProfileEdit({ data }: ProfileEditProp) {
         try {
             setLoading(true);
             const formData = new FormData();
-            
+
             if (imgUploaded) {
                 formData.append("image", imgUploaded);
             }
@@ -100,7 +101,7 @@ function ProfileEdit({ data }: ProfileEditProp) {
 
             const dataImg = await responseImg.json();
 
-            if (!dataImg){
+            if (!dataImg) {
                 setError((prev) => ({
                     ...prev,
                     uploadProfile: data.msg
@@ -113,7 +114,7 @@ function ProfileEdit({ data }: ProfileEditProp) {
                     "x-frontend-header": "frontend",
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ name: formValues.name, sex: formValues.sex, email: formValues.email, age: formValues.age, weight: formValues.weight, height: formValues.height, activity: formValues.activity, objective: formValues.objective, allergies: formValues.allergies, intolerances: formValues.intolerances, food_preferences: formValues.food_preferences, imageProfile: dataImg.filePath}),
+                body: JSON.stringify({ name: formValues.name, sex: formValues.sex, email: formValues.email, age: formValues.age, weight: formValues.weight, height: formValues.height, activity: formValues.activity, objective: formValues.objective, allergies: formValues.allergies, intolerances: formValues.intolerances, food_preferences: formValues.food_preferences, imageProfile: dataImg.filePath }),
                 credentials: "include"
             });
 
@@ -180,10 +181,11 @@ function ProfileEdit({ data }: ProfileEditProp) {
                 <div className="form-group">
                     <Button style="accept" text={"Actualizar"} disabled={loading} loading={loading} />
                 </div>
+                <div className="form-group" onClick={() => window.location.reload()}>
+                    <Button style="normal" text={"Cancelar"} type="button" />
+                </div>
             </form>
-            <div className="form-group">
-                <Button style="normal" text={"Cancelar"} />
-            </div>
+
             {error.uploadProfile && <label className="msgError">{error.uploadProfile}</label>}
         </>
     );
