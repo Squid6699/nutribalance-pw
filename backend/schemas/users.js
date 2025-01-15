@@ -26,7 +26,7 @@ const UsersSchema = new mongoose.Schema({
     },
     imageProfile: {
         type: String,
-        default: "/uploads/user-default.png"
+        default: "uploads/user-default.png"
     }
 }, { versionKey: false });
 
