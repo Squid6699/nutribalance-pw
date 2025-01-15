@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Input from "../components/Input";
 import { faEnvelope, faUser } from "@fortawesome/free-regular-svg-icons";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ProfileEditProp } from "../types";
 import Select from "../components/Select";
 import { faChartLine, faHashtag, faPerson, faScaleBalanced, faTextHeight } from "@fortawesome/free-solid-svg-icons";
@@ -26,7 +26,7 @@ function ProfileEdit({ data }: ProfileEditProp) {
         food_preferences: data.food_preferences || "",
         imageProfile: HOST + data?.imageProfile
     });
-
+    const inputRef = useRef(null); // Referencia al input oculto
     const [imgUploaded, setImgUpdloaded] = useState<File>();
     const [imagePreview, setImagePreview] = useState<string>(formValues.imageProfile);
 
@@ -36,6 +36,12 @@ function ProfileEdit({ data }: ProfileEditProp) {
         img: "",
         uploadProfile: "",
     });
+
+    const abrirInputArchivo = () => {
+        if (inputRef.current) {
+            inputRef.current.click(); // Activa el input oculto
+        }
+    };
 
     const handleInputChange = (field: string, value: string) => {
         setFormValues((prev) => ({
@@ -143,9 +149,9 @@ function ProfileEdit({ data }: ProfileEditProp) {
         <>
             <h1>Edit Profile</h1>
             <form className="form-editProfile" onSubmit={handleSubmitFormEditProfile}>
-                <img className="imgEditProfile" src={imagePreview} alt="" />
+                <img className="imgEditProfile" src={imagePreview} alt="" onClick={abrirInputArchivo}/>
                 <div className="form-group">
-                    <input type="file" accept=".png, .jpg, .jpeg" onChange={(event) => handleImgChange(event)} />
+                    <input ref={inputRef} hidden type="file" accept=".png, .jpg, .jpeg" onChange={(event) => handleImgChange(event)} />
                 </div>
                 {error.img && <label className="msgError">{error.img}</label>}
 
