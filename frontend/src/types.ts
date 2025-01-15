@@ -1,4 +1,5 @@
 export interface ButtonProps {
+    type?: "submit" | "button" | "reset";
     text?: string | null;
     icon?: any;
     style: "accept" | "normal";
