@@ -24,7 +24,7 @@ routerApiUploadImage.put("/uploadimage", upload.single("image"), async (req, res
     }
 
     if (!req.file) {
-        return res.status(400).send({ success: false, msg: "DIDNT SEND ANY IMAGE", filePath: "/uploads/user-default.png"});
+        return res.status(400).send({ success: false, msg: "DIDNT SEND ANY IMAGE", filePath: "uploads/user-default.png"});
     }
     res.send({ success: true, msg: "UPLOADED IMAGE SUCCEFULLY", filePath: req.file.path });
 })
