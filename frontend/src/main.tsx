@@ -21,11 +21,13 @@ const queryClient = new QueryClient({
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter future={{
+      v7_startTransition: false,
+    }}>
       <SessionProvider>
         <QueryClientProvider client={queryClient}>
           <App />
-          <ReactQueryDevtools/>
+          <ReactQueryDevtools />
         </QueryClientProvider>
       </SessionProvider>
     </BrowserRouter>
