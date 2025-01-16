@@ -4,7 +4,7 @@ import { faEnvelope, faUser } from "@fortawesome/free-regular-svg-icons";
 import { useRef, useState } from "react";
 import { ProfileEditProp } from "../types";
 import Select from "../components/Select";
-import { faChartLine, faHashtag, faPerson, faScaleBalanced, faTextHeight } from "@fortawesome/free-solid-svg-icons";
+import { faBowlFood, faBrain, faChartLine, faHashtag, faPerson, faScaleBalanced, faShrimp, faTextHeight } from "@fortawesome/free-solid-svg-icons";
 import Button from "../components/Button";
 import { useSesion } from "../hook/useSesion";
 
@@ -26,7 +26,7 @@ function ProfileEdit({ data }: ProfileEditProp) {
         food_preferences: data.food_preferences || "",
         imageProfile: HOST + data?.imageProfile
     });
-    const inputRef = useRef(null); // Referencia al input oculto
+    const inputRef = useRef<HTMLInputElement>(null); // Referencia al input oculto
     const [imgUploaded, setImgUpdloaded] = useState<File>();
     const [imagePreview, setImagePreview] = useState<string>(formValues.imageProfile);
 
@@ -69,7 +69,6 @@ function ProfileEdit({ data }: ProfileEditProp) {
 
     const handleSubmitFormEditProfile = async (event: React.FormEvent) => {
         event.preventDefault();
-        console.log("aaaaaaa")
 
         if (formValues.name === "") {
             setError((prev) => ({
@@ -149,7 +148,7 @@ function ProfileEdit({ data }: ProfileEditProp) {
         <>
             <h1>Edit Profile</h1>
             <form className="form-editProfile" onSubmit={handleSubmitFormEditProfile}>
-                <img className="imgEditProfile" src={imagePreview} alt="" onClick={abrirInputArchivo}/>
+                <img className="imgEditProfile" src={imagePreview} alt="" onClick={abrirInputArchivo} />
                 <div className="form-group">
                     <input ref={inputRef} hidden type="file" accept=".png, .jpg, .jpeg" onChange={(event) => handleImgChange(event)} />
                 </div>
@@ -183,6 +182,32 @@ function ProfileEdit({ data }: ProfileEditProp) {
                         "Activo",
                         "Muy activo"
                     ]} icon={<FontAwesomeIcon icon={faChartLine} />} value={formValues.activity} onChange={(value) => handleInputChange("activity", value)} />
+                </div>
+                <div className="form-group">
+                    <Select label="Objetivo" options={[
+                        "Perder peso",
+                        "Mantener peso",
+                        "Ganar peso",
+                        "Mejorar salud"
+                    ]} icon={<FontAwesomeIcon icon={faChartLine} />} value={formValues.objective} onChange={(value) => handleInputChange("objective", value)} />
+                </div>
+                <div className="form-group">
+                    <Input type="text" label="Alergias" icon={<FontAwesomeIcon icon={faShrimp} />} value={formValues.allergies} onChange={(value) => handleInputChange("allergies", value)} />
+                </div>
+                <div className="form-group">
+                    <Input type="text" label="Intolerancias" icon={<FontAwesomeIcon icon={faBrain} />} value={formValues.intolerances} onChange={(value) => handleInputChange("intolerances", value)} />
+                </div>
+                <div className="form-group">
+                    <Select label="Preferencias Alimenticias" options={[
+                        "Vegetariano",
+                        "Vegano",
+                        "Carnívoro",
+                        "Keto",
+                        "Paleo",
+                        "Sin gluten",
+                        "Sin lactosa",
+                        "Sin azúcar"
+                    ]} icon={<FontAwesomeIcon icon={faBowlFood} />} value={formValues.food_preferences} onChange={(value) => handleInputChange("food_preferences", value)} />
                 </div>
                 <div className="form-group">
                     <Button style="accept" text={"Actualizar"} disabled={loading} loading={loading} />

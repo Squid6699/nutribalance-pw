@@ -73,18 +73,12 @@ routerApiEditProfile.put("/editprofile", async (req, res) => {
 
         if (updatedUser) {
 
-            const tokenCurrent = req.cookies.session;
-
-            if (!tokenCurrent) {
-                return res.json({ success: false, msg: "OCURRED ERROR TRY LATER" });
-            }
-
-            res.clearCookie("session", tokenCurrent, {
+            res.clearCookie("session", token, {
                 httpOnly: true,
                 secure: process.env.NODE_ENV === "production",
             });
 
-            const tokenNew = jwt.sign({ name: updatedUser.name, email: updatedUser.email, autorization: updatedUser.autorization }, process.env.SECRET_KEY, {
+            const tokenNew = jwt.sign({ name: name, email: email, autorization: updatedUser.autorization }, process.env.SECRET_KEY, {
                 expiresIn: process.env.EXPIRED,
             });
 
@@ -93,7 +87,8 @@ routerApiEditProfile.put("/editprofile", async (req, res) => {
                 secure: process.env.NODE_ENV === "production",
                 sameSite: "strict",
             });
-            res.json({ success: true, name: updatedUser.name, email: updatedUser.email, autorization: updatedUser.autorization });
+            
+            res.json({ success: true, name: name, email: email, autorization: updatedUser.autorization });
 
         }
 
